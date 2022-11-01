@@ -1,0 +1,23 @@
+{
+  "name": "type-flow",
+  "version": "0.0.0",
+  "description": "A validation library that makes your code safe and readable",
+  "main": "index",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flagtail/type-flow.git"
+  },
+  "keywords": [
+    "flagtail",
+    "validate"
+  ],
+  "author": "rhie-coder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flagtail/type-flow/issues"
+  },
+  "homepage": "https://github.com/flagtail/type-flow#readme"
+}
