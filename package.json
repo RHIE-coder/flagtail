@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "A validation library that makes your code safe and readable",
   "main": "index",
+  "type": "module",
   "scripts": {
+    "build": "rollup -c",
     "test": "jest"
   },
   "repository": {
@@ -12,12 +14,21 @@
   },
   "keywords": [
     "flagtail",
-    "validate"
+    "validate",
+    "declarative"
   ],
   "author": "rhie-coder",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/flagtail/type-flow/issues"
   },
-  "homepage": "https://github.com/flagtail/type-flow#readme"
+  "homepage": "https://github.com/flagtail/type-flow#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@rollup/plugin-babel": "^6.0.2",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "jest": "^29.3.1",
+    "rollup": "^3.3.0"
+  }
 }
