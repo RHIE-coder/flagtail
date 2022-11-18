@@ -4,6 +4,7 @@
   "description": "A validation library that makes your code safe and readable",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "browser": "dist/esm/index.js",
   "files": [
     "dist"
   ],
@@ -20,7 +21,10 @@
     "validate",
     "declarative"
   ],
-  "author": "rhie-coder",
+  "author": {
+    "name": "rhie-coder",
+    "url": "https://github.com/rhie-coder"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/flagtail/type-flow/issues"
@@ -34,5 +38,5 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "jest": "^29.3.1",
     "rollup": "^3.3.0"
-  }
+  } 
 }

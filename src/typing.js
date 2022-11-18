@@ -184,10 +184,10 @@ class Typing {
                 return this;
             } 
         })
-
+        console.log(propNames);
         delete propNames["chain"]
         delete propNames["is"]
-        delete propNames["call"]
+        delete propNames["watch"]
 
 
         for(const key in propNames){
