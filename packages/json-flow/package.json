@@ -1,10 +1,10 @@
 {
-  "name": "type-flow",
-  "version": "0.0.0",
-  "description": "A validation library that makes your code safe and readable",
+  "name": "@flagtail/json-flow",
+  "version": "0.0.1",
+  "description": "A library that helps with json related handling",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "browser": "dist/esm/index.js",
+  "browser": "dist/json-flow.js",
   "files": [
     "dist"
   ],
@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flagtail/type-flow.git"
+    "url": "git+https://github.com/flagtail/flagtail-tools.git"
   },
   "keywords": [
     "flagtail",
-    "validate",
-    "declarative"
+    "json",
+    "json-handler"
   ],
   "author": {
     "name": "rhie-coder",
@@ -27,9 +27,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/flagtail/type-flow/issues"
+    "url": "https://github.com/flagtail/flagtail-tools/issues"
   },
-  "homepage": "https://github.com/flagtail/type-flow#readme",
+  "homepage": "https://github.com/flagtail/flagtail-tools/tree/main/json-flow#readme",
   "devDependencies": {
     "@babel/core": "^7.20.2",
     "@babel/preset-env": "^7.20.2",
