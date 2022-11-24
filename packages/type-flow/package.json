@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/flagtail/flagtail-tools/issues"
   },
-  "homepage": "https://github.com/flagtail/flagtail-tools/tree/main/type-flow#readme",
+  "homepage": "https://github.com/flagtail/flagtail-tools/tree/main/packages/type-flow#readme",
   "devDependencies": {
     "@babel/core": "^7.20.2",
     "@babel/preset-env": "^7.20.2",
