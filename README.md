@@ -9,3 +9,7 @@ A validation library that makes your code safe and readable.
 ## `@flagtail/json-flow`
 
 A library that helps with json related handling.
+
+## `@flagtail/json-rpc-flow`
+
+This is a module that facilitates JSON-RPC requests.
