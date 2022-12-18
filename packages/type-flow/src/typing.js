@@ -152,7 +152,6 @@ class Typing {
                 }
 
                 return false;
-
             },
 
             sameWith(valueOrType) {
@@ -184,7 +183,6 @@ class Typing {
                 return this;
             } 
         })
-        console.log(propNames);
         delete propNames["chain"]
         delete propNames["is"]
         delete propNames["watch"]

@@ -1,1 +1,1 @@
-module.exports = require("./typing")
+module.exports = require("./typing");
