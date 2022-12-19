@@ -121,10 +121,23 @@ class Typing {
     }
 
     static notValid(typingArr) {
-        return !typingArr.every(bool => {
+        //TODO: 함수 호출형 / 배열  
+        const checkArgsMatchedTypingChainType = typingArr.every(boolInstance=> {
+            return boolInstance instanceof TypingChain;
+        })
+
+        if(!checkArgsMatchedTypingChainType) {
+            throw new ReferenceError("All of types must be <TypingChain> type");
+        }
+
+        const isNotValid = !typingArr.every(bool => {
             if(bool instanceof TypingChain) return bool.isValid() === true;
             return bool === true;
         });
+
+        typingArr
+
+        return isNotValid;
     }
 
     static valid(typingArr) {
