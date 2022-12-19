@@ -2,18 +2,22 @@ const JSONResolver = require("./json-resolver");
 
 const preventSignal = Symbol("prevent-direct-call")
 
-async function safeCall(callback, exceptHandler) {
-    try {
-        return await callback();
-    } catch (error) {
-        if(!exceptHandler) {
-            exceptHandler = (error) => {
-                console.error(error.message);
-                return error
-            }
-        }
+class SafeCaller {
 
-        return await exceptHandler(error);
+    static async watch(callback, exceptHandler) {
+
+        try {
+            return await callback();
+        } catch (error) {
+            if(!exceptHandler) {
+                exceptHandler = (error) => {
+                    console.error(error.message);
+                    return error
+                }
+            }
+
+            return await exceptHandler(error);
+        }
     }
 }
 
@@ -63,6 +67,8 @@ class Typing {
 
     static #primitiveTypes = [ "boolean", "number", "bigint", "string", "symbol" ]
 
+    static watch = SafeCaller.watch;
+
     static isNotNull(value) {
         return (
             value !== null &&
@@ -96,7 +102,10 @@ class Typing {
     }
 
     static isFunction(value) {
-        return typeof value === "function" && !value.toString().startsWith("class")
+        return typeof value === "function" && (
+            value.toString().startsWith("()") ||
+            value.toString().startsWith("function")
+        )
     }
 
     static isClass(value) {
@@ -111,103 +120,86 @@ class Typing {
         return typeof value === "object" && value instanceof Array;
     }
 
-    static check(typingArr) {
-
+    static notValid(typingArr) {
+        //TODO: 함수 호출형 / 배열  
         const checkArgsMatchedTypingChainType = typingArr.every(boolInstance=> {
             return boolInstance instanceof TypingChain;
         })
 
         if(!checkArgsMatchedTypingChainType) {
-            throw new TypeError("All of types must be <TypingChain> type");
+            throw new ReferenceError("All of types must be <TypingChain> type");
         }
 
-        const isValid = typingArr.every(typeChainResult => {
-            return typeChainResult.isValid() === true;
+        const isNotValid = !typingArr.every(bool => {
+            if(bool instanceof TypingChain) return bool.isValid() === true;
+            return bool === true;
         });
 
-        if(!isValid) {
-            throw new ReferenceError(
-                JSON.stringify(
-                    typingArr.map(typeChainResult=> typeChainResult.verbose()),
-                    null,
-                    4,
-                )
-            )
-        }
+        typingArr
 
-        return isValid;
+        return isNotValid;
+    }
+
+    static valid(typingArr) {
+        return typingArr.every(bool => {
+            if(bool instanceof TypingChain) return bool.isValid() === true;
+            return bool === true;
+        });
     }
 
     static is(value) {
         return {
-           
-            satisfy(predictCallback) {
-  
-                if(!Typing.isFunction(predictCallback)) {
-                    throw new TypeError(`the callback must be function`);
-                }
-
-                const trueOrFalse = predictCallback(value);
-
-                if(!Typing.is(trueOrFalse).primitiveOf(Boolean)) {
-                    throw new TypeError(`the returned value of callback must be boolean`);
-                }
-
-                return trueOrFalse;
-            },
-
+            
             instanceOf(typeName) {
                 return value instanceof typeName;
             },
 
             primitiveOf(typeName) {
-               
+                
                 if(typeof typeName === "function") {
-                    const primitiveIndex = Typing.#wrapperTypes.indexOf(typeName);
-
-                    if(primitiveIndex === -1) {
-                        return false;
-                    }
-
-                    return typeof value === Typing.#primitiveTypes[primitiveIndex];
+                    return Typing.#wrapperTypes.includes(typeName);
                 }
 
                 if(typeof typeName === "string") {
-                    const primitiveIndex = Typing.#primitiveTypes.indexOf(typeName);
-
-                    if(primitiveIndex === -1) {
-                        return false;
-                    }
-
-                    return typeof value === Typing.#primitiveTypes[primitiveIndex];
+                    return Typing.#primitiveTypes.includes(typeName);
                 }
 
                 return false;
+            },
+
+            sameWith(valueOrType) {
+                if(Typing.isArray(valueOrType)) {
+                    for(let i = 0; valueOrType.length > 0; i++){
+                        if(value === valueOrType[i]) return true;
+                    }
+                    return false;
+                }
+                return value === valueOrType;
             },
             
         }
     }
 
-    static the(target) {
+    static chain(target) {
 
         const propNames = Object.getOwnPropertyDescriptors(Typing);
 
         const chainable = new TypingChain(target, preventSignal);
         
-        ["instanceOf", "primitiveOf", "satisfy"].forEach(innerKeyOf_is=>{
-            const prefix = "is"; 
-            const keyName = prefix + innerKeyOf_is[0].toUpperCase() + innerKeyOf_is.substring(1)
-            chainable[keyName] = function(arg) {
+        ["instanceOf", "primitiveOf", "sameWith"].forEach(innerKeyOf_is=>{
+            chainable[innerKeyOf_is] = function(arg) {
                 this.update({
-                    name: keyName, 
+                    name: innerKeyOf_is, 
                     result: Typing.is(this.target)[innerKeyOf_is](arg),
                     param: arg,
                 }, preventSignal);
                 return this;
             } 
         })
-        delete propNames["the"]
+        delete propNames["chain"]
         delete propNames["is"]
+        delete propNames["watch"]
+
 
         for(const key in propNames){
             if(key === "length" || key === "name" || key === "prototype") continue;
@@ -225,7 +217,4 @@ class Typing {
 
 }
 
-module.exports = {
-    Typing,
-    safeCall,
-}
+module.exports = Typing

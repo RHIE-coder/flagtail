@@ -1,20 +1,26 @@
-const Typing = require('../src');
+const {Typing, safeCall} = require('../src');
+
+class Member {
+    
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    isAdult() {
+        return this.age >= 18
+    }
+}
 
 (async()=>{
-    const result = Typing.chain('hello').isNotNull().primitiveOf(String).sameWith('hello');
-    console.log(result.isValid())
-    console.log(result.verbose())
 
-    Typing.watch(()=>{
-        if(
-            Typing.notValid([
-                Typing.chain('hello').isNotNull().primitiveOf(String).sameWith('hello'),
-                Typing.chain(100).isNotNull().primitiveOf(Number).sameWith(111),
-                Typing.is('greeting').sameWith('greeting'),
-            ])
-        ) {
-            throw new TypeError()
-        }
+    safeCall(()=>{
+        Typing.check([
+            Typing.the('hello').isNotNull().isPrimitiveOf(String),
+            Typing.the(100).isPrimitiveOf(Number).isSatisfy(v=> v % 2 === 0),
+            Typing.the(new Member('rhie', 18)).isInstanceOf(Member).isSatisfy(v=>v.isAdult())
+        ])
+        console.log("--- do something ---");
     },
     (err)=>{
         console.log(err);

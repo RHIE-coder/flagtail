@@ -1,4 +1,4 @@
-const Typing  = require('../src');
+const {Typing}  = require('../src');
 
 test('CHECK: isNotNull()', () => {
   expect(Typing.isNotNull(false)).toBeTruthy();
@@ -109,12 +109,34 @@ test('CHECK: is.primitiveOf()', ()=> {
   expect(Typing.is(false).primitiveOf('boolean')).toBeTruthy();
 
   expect(Typing.is([1, 2, 3]).primitiveOf('array')).toBeFalsy();
+  expect(Typing.is(10).primitiveOf('string')).toBeFalsy();
+  expect(Typing.is('text').primitiveOf(Number)).toBeFalsy();
 })
 
-test('CHECK: is.sameWith()', ()=> {
-  class Clazz {}
-  expect(Typing.is(Clazz).sameWith(Clazz)).toBeTruthy();
-  expect(Typing.is('text').sameWith('text')).toBeTruthy();
-  expect(Typing.is(10).sameWith(10)).toBeTruthy();
-  expect(Typing.is(2).sameWith([Clazz, 2, 'text'])).toBeTruthy(); 
+test('CHECK: is.satisfy()', () => {
+  class Member {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    isAdult() {
+      return this.age >= 18
+    }
+  }
+
+  expect(Typing.is(100).satisfy(v => v % 2 === 0)).toBeTruthy();
+  expect(Typing.is(new Member('rhie', 17)).satisfy(v => v.isAdult())).toBeFalsy();
 })
+
+
+
+
+// Deprecate: focus on type check
+// test('CHECK: is.sameWith()', ()=> {
+//   class Clazz {}
+//   expect(Typing.is(Clazz).sameWith(Clazz)).toBeTruthy();
+//   expect(Typing.is('text').sameWith('text')).toBeTruthy();
+//   expect(Typing.is(10).sameWith(10)).toBeTruthy();
+//   expect(Typing.is(2).sameWith([Clazz, 2, 'text'])).toBeTruthy(); 
+// })

@@ -1,4 +1,4 @@
-const Typing  = require('../src');
+const {Typing, safeCall} = require('../src');
 
 test('CHECK', () => {
     
