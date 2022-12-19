@@ -1,7 +1,7 @@
-const {Typing, safeCall} = require('../src');
+const { Typing, safeCall } = require('../src');
 
 class Member {
-    
+
     constructor(name, age) {
         this.name = name;
         this.age = age;
@@ -12,17 +12,19 @@ class Member {
     }
 }
 
-(async()=>{
+(async () => {
 
-    safeCall(()=>{
+
+    safeCall(() => {
         Typing.check([
             Typing.the('hello').isNotNull().isPrimitiveOf(String),
-            Typing.the(100).isPrimitiveOf(Number).isSatisfy(v=> v % 2 === 0),
-            Typing.the(new Member('rhie', 18)).isInstanceOf(Member).isSatisfy(v=>v.isAdult())
+            Typing.the({role:"user"}).isArray().isNotNull().isSatisfy(v => v.role === "admin"),
+            Typing.the(100).isPrimitiveOf(Number).isSatisfy(v => v % 2 === 0),
+            Typing.the(new Member('rhie', 17)).isInstanceOf(Member).isSatisfy(v => v.isAdult())
         ])
         console.log("--- do something ---");
     },
-    (err)=>{
-        console.log(err);
-    })
+        (err) => {
+            console.log(err);
+        })
 })()

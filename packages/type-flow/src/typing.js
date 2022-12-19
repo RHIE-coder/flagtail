@@ -124,13 +124,25 @@ class Typing {
         const isValid = typingArr.every(typeChainResult => {
             return typeChainResult.isValid() === true;
         });
-
+        
+        const verboseArrItem = typingArr.map(typeChainResult=> typeChainResult.verbose())
+        const errItem = []
+        for (let verboseInfo of verboseArrItem) {
+            for (let infoItem of verboseInfo.slice(1)) {
+                console.log(infoItem);
+                const value = Object.entries(infoItem)[0][1];
+                if (value === false) {
+                    errItem.push(verboseInfo);
+                    break;
+                }
+            }
+        }
         if(!isValid) {
             throw new ReferenceError(
                 JSON.stringify(
-                    typingArr.map(typeChainResult=> typeChainResult.verbose()),
-                    null,
-                    4,
+                    errItem,
+                    // null,
+                    // 4,
                 )
             )
         }
