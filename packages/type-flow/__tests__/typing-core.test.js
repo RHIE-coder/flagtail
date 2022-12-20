@@ -129,7 +129,11 @@ test('CHECK: is.satisfy()', () => {
   expect(Typing.is(new Member('rhie', 17)).satisfy(v => v.isAdult())).toBeFalsy();
 })
 
-
+test('CHECK: preveted call constructor', () => {
+  expect(() => new Typing()).toThrow(
+    new SyntaxError("Can't make <Typing> instance")
+  )
+})
 
 
 // Deprecate: focus on type check

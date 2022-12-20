@@ -129,7 +129,6 @@ class Typing {
         const errItem = []
         for (let verboseInfo of verboseArrItem) {
             for (let infoItem of verboseInfo.slice(1)) {
-                console.log(infoItem);
                 const value = Object.entries(infoItem)[0][1];
                 if (value === false) {
                     errItem.push(verboseInfo);
@@ -142,7 +141,7 @@ class Typing {
                 JSON.stringify(
                     errItem,
                     // null,
-                    // 4,
+                    // 2,
                 )
             )
         }
