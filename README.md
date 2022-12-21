@@ -1,11 +1,11 @@
 # Flagtail Tools
 
-Tools to improve stability and quality
+Tools to improve JavaScript code stability and quality
 
-## `@flagtail/type-flow`
+## `type-flow`
 
 A validation library that makes your code safe and readable.
 
-## `@flagtail/json-rpc-flow`
+## `json-rpc-flow`
 
 This is a module that facilitates JSON-RPC requests.
