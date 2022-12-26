@@ -1,2 +1,3 @@
 src
 rollup.config.js
+__tests__

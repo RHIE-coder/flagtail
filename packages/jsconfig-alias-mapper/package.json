@@ -1,0 +1,33 @@
+{
+  "name": "@flagtail/jsconfig-alias-mapper",
+  "version": "0.1.0",
+  "description": "Register custom module paths using jsconfig JSON file in NodeJS",
+  "main": "index.js",
+  "files":[
+    "index.js"
+  ],
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flagtail/flagtail-tools.git"
+  },
+  "keywords": [
+    "flagtail",
+    "module-alias",
+    "jsconfig"
+  ],
+  "author": {
+    "name": "rhie-coder",
+    "url": "https://github.com/rhie-coder"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flagtail/flagtail-tools/issues"
+  },
+  "homepage": "https://github.com/flagtail/flagtail-tools/tree/main/packages/jsconfig-alias-mapper#readme",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  } 
+}
