@@ -7,7 +7,7 @@ Register custom module paths using jsconfig JSON file in NodeJS
 ### - Installation
 
 ```sh
-npm i module-path-mapper
+npm i @flagtail/jsconfig-alias-mapper 
 ```
 
 <br><br>
@@ -68,7 +68,7 @@ the important key is `paths`
 ### - `app.js`
 
 ```js
-require('module-path-mapper')({
+require('@flagtail/jsconfig-alias-mapper')({
     rootPath: path.join(__dirname, '..'),
 })
 
@@ -79,7 +79,7 @@ const myModule = require('@/utils/something');
 
 ## # Using Jest
 
-Unfortunately, `module-path-mapper` itself would not work from Jest due to a custom behavior of Jest's require. But you can use it's own aliasing mechanism instead. The configuration can be defined either in `package.json` or `jest.config.js`:
+Unfortunately, `@flagtail/jsconfig-alias-mapper` itself would not work from Jest due to a custom behavior of Jest's require. But you can use it's own aliasing mechanism instead. The configuration can be defined either in `package.json` or `jest.config.js`:
 
 ### - `package.json`
 
