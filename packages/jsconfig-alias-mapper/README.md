@@ -102,8 +102,6 @@ you don't need to scan the `jsconfig.json`. and give aliases to resolve modules 
 not recommend to remove the `jsconfig.json` even if you don't need it, because of IDE hint functions.
 
 ```js
-const path = require('path')
-
 require('@flagtail/jsconfig-alias-mapper')({
     alias : {
       '@/*': '../src/*'
