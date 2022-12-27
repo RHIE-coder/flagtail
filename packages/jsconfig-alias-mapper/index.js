@@ -2,8 +2,8 @@
 // https://github.com/ilearnio/module-alias
 // https://github.com/Sawtaytoes/better-module-alias
 
-const BuiltinModule = require('module')
-const path = require('path')
+const BuiltinModule = require('module');
+const path = require('path');
 const fs = require('fs');
 
 // Guard against poorly mocked module constructors
@@ -15,13 +15,13 @@ const Module = module.constructor.length > 1
 const moduleAliasMapper = {}
 const moduleAliasNameList = []
 
-const getBasePathFromFilePath = filepath => filepath.replace(/^(.+)[\\/]node_modules$/, '$1')
+const getBasePathFromFilePath = filepath => filepath.replace(/^(.+)[\\/]node_modules$/, '$1');
 
 const getRealPathOfAlias = ( alias, parentModule, resolvePath ) => {
 
 	const parentFilePath = parentModule
 			.paths
-			.find(filePath => moduleAliasMapper[getBasePathFromFilePath(filePath)])
+			.find(filePath => moduleAliasMapper[getBasePathFromFilePath(filePath)]);
 
 	if (!parentFilePath) {
 		throw new Error(
@@ -33,11 +33,11 @@ const getRealPathOfAlias = ( alias, parentModule, resolvePath ) => {
 		)
 	}
 
-	const basePath = getBasePathFromFilePath(parentFilePath)
+	const basePath = getBasePathFromFilePath(parentFilePath);
 	
-	const aliasTarget = moduleAliasMapper[basePath][alias]
+	const aliasTarget = moduleAliasMapper[basePath][alias];
 
-	return resolvePath.replace(alias, aliasTarget)
+	return resolvePath.replace(alias, aliasTarget);
 }
 
 const originalResolveFilename = Module._resolveFilename
@@ -121,11 +121,90 @@ const scanConfigFile = (from) => {
 	return paths;
 }
 
+/* 
+	remain function
+
+	 - package.json
+*/
+const findRootPathByPackageJson = (rootPathCandidates) => {
+
+	let selectedBasePath = [];
+
+	for(const basePath of rootPathCandidates) {
+		try {
+			const packageJson = fs.readFileSync(path.join(basePath, "package.json"))
+			if(packageJson) {
+				selectedBasePath.push(basePath);
+			}
+		} catch (err) {
+			continue;
+		}
+	}
+	
+	if (selectedBasePath.length === 0) {
+		throw new Error('there is no any root path (includes package.json). To use rootPath option is recommended')
+	}
+
+	if (selectedBasePath.length > 1) {
+		throw new Error(`cannot define which one is root path 
+			(founded package.json included project ${selectedBasePath}). 
+			To use rootPath option is recommended`)
+	}
+
+	return selectedBasePath[0];
+}
+
+const findRootPathByJsconfigJson = (rootPathCandidates) => {
+
+	let selectedBasePath = [];
+
+	for(const basePath of rootPathCandidates) {
+		try {
+			const jsconfigJson = fs.readFileSync(path.join(basePath, "jsconfig.json"))
+			if(jsconfigJson) {
+				selectedBasePath.push(basePath);
+			}
+		} catch (err) {
+			continue;
+		}
+	}
+	
+	if (selectedBasePath.length === 0) {
+		throw new Error('there is no any root path (includes package.json). To use rootPath option is recommended')
+	}
+
+	if (selectedBasePath.length > 1) {
+		throw new Error(`cannot define which one is root path 
+			(tried to find jsconfig.json included project ${selectedBasePath}). 
+			To use rootPath option is recommended`)
+	}
+
+	return selectedBasePath[0];
+}
+
+const getRootPath = () => {
+	const execNodePath = process.cwd();
+	const pathStack = module
+					.paths
+					.map(nodeModulePath => getBasePathFromFilePath(nodeModulePath))
+					.filter(mappedPath => !mappedPath.includes("node_modules"))
+					.filter(removedNodeModulesPath => removedNodeModulesPath.includes(execNodePath))	
+
+	const rootPath = findRootPathByJsconfigJson(pathStack);
+	return rootPath
+}
+
 const init = (config) => {
 	let aliases;
-	if(!config?.rootPath) throw new ReferenceError('the rootPath should not be empty')
-	if (config?.aliasesMapping) {
-		aliases = config.aliasesMapping;
+
+	config = config ?? {};
+
+	if(!config?.rootPath) {
+		config.rootPath = getRootPath();
+	}
+
+	if (config?.paths) {
+		aliases = config.paths;
 	} else {
 		aliases = scanConfigFile(config.rootPath);
 	}
@@ -133,7 +212,5 @@ const init = (config) => {
 	addModuleAliases(config.rootPath, aliases);
 	return moduleAliasMapper;
 };
-
-
 
 module.exports = init;
