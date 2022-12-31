@@ -101,6 +101,16 @@ test('CHECK: is.instanceOf()', ()=> {
 
   expect(Typing.is('test').instanceOf(String)).toBeFalsy();
   expect(Typing.is(Clazz).instanceOf(Clazz)).toBeFalsy();
+
+
+  class Member{}
+
+  const memberTypeCheckResult1 = Typing.is(new Member()).instanceOf([Member,Array]);
+  const memberTypeCheckResult2 = Typing.is(new Member()).instanceOf([Error,Array]);
+
+  expect(memberTypeCheckResult1).toBeTruthy();
+  expect(memberTypeCheckResult2).toBeFalsy();
+
 })
 
 test('CHECK: is.primitiveOf()', ()=> {
@@ -111,6 +121,16 @@ test('CHECK: is.primitiveOf()', ()=> {
   expect(Typing.is([1, 2, 3]).primitiveOf('array')).toBeFalsy();
   expect(Typing.is(10).primitiveOf('string')).toBeFalsy();
   expect(Typing.is('text').primitiveOf(Number)).toBeFalsy();
+
+  const age = "30";
+  const name = "Alice"
+
+  const ageTypeCheckResult = Typing.is(age).primitiveOf(["number", String])
+  const nameTypeCheckResult = Typing.is(name).primitiveOf([Number,Boolean])
+
+  expect(ageTypeCheckResult).toBeTruthy();
+  expect(nameTypeCheckResult).toBeFalsy();
+
 })
 
 test('CHECK: is.satisfy()', () => {

@@ -1,16 +1,14 @@
-# `type-flow`
+const {
+    Typing,
+    safeCall
+} = require('./src');
 
-A validation library that makes your code safe and readable
-
-# Why `type-flow`
-
-## # Before use `type-flow`
-
-```js
 class Member {
 
     constructor(name, age) {
-       
+        
+        
+
         if(typeof name === "string") {
             if(name.length > 30) {
                 throw new RangeError(`the name length (${name.length}) is too long (over 30)`)
@@ -46,10 +44,3 @@ function main() {
 }
 
 main()
-```
-
-## # With `type-flow`
-
-```js
-
-```
