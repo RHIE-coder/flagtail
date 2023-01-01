@@ -368,10 +368,10 @@ Typing.the(111)
       .isSatisfy(v => v >= 100)
       .isValid() // true
 
-Typing.the(new Member('rhie-coder', 20))
+Typing.the(new Member('rhie-coder', 17))
       .isInstanceOf(Member)
-      .isSatisfy(v => v.isAdult()))
-      .isValid()
+      .isSatisfy(v => v.isAdult())
+      .isValid() // false
 ```
 
 <br><br>
