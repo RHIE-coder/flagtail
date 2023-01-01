@@ -3,44 +3,30 @@ const {
     safeCall
 } = require('./src');
 
+
 class Member {
-
     constructor(name, age) {
-        
-        
-
-        if(typeof name === "string") {
-            if(name.length > 30) {
-                throw new RangeError(`the name length (${name.length}) is too long (over 30)`)
-            }
-            this.name = name;
-        } else {
-            throw new TypeError(`the name type must be string type`);
-        }
-
-        if(typeof age === "number") {
-            if(age < 0) {
-                throw new RangeError(`the age ${age} cannot be minus number`);
-            }
-            this.age = age;
-        } else {
-            throw new TypeError(`the age type must be number type`);
-        }
-
+    this.name = name;
+    this.age = age;
     }
 
     isAdult() {
-        return this.age > 18;
+    return this.age >= 18
     }
 }
 
-function main() {
-    try {
-        const alice = new Member("Alice", 30)
-        console.log(alice.isAdult())
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-main()
+safeCall(()=>{
+    Typing.check([
+        Typing.the('hello').isNotNull().isPrimitiveOf(String),
+        Typing.the({role:"user"}).isArray().isNotNull().isSatisfy(v => v.role === "admin"),
+        Typing.the(100).isPrimitiveOf(Number).isSatisfy(v => v % 2 === 0),
+        Typing.the(new Member('rhie', 17)).isInstanceOf(Member).isSatisfy(v => v.isAdult())
+    ])
+},
+(err)=> {
+    console.log(JSON.stringify(
+        JSON.parse(err.message),
+        null,
+        2
+    ))
+})

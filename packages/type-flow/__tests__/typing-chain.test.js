@@ -13,7 +13,7 @@ class Member {
 
 test('CHECK: the (chaining)', () => {
     expect(Typing.the(111).isPrimitiveOf(Number).isNotNull().isSatisfy(v => v >= 100).isValid()).toBeTruthy();
-    expect(Typing.the(new Member('rhie-coder', 20)).isInstanceOf(Member).isSatisfy(v => v.isAdult())).toBeTruthy();
+    expect(Typing.the(new Member('rhie-coder', 20)).isInstanceOf(Member).isSatisfy(v => v.isAdult()).isValid()).toBeTruthy();
 });
 
 test('CHECK: safeCall', async () => {

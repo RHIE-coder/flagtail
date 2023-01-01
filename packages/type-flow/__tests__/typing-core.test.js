@@ -75,7 +75,7 @@ test('CHECK: isObject()', ()=> {
   expect(Typing.isObject({})).toBeTruthy();
 
   class Clazz {}
-  expect(Typing.isObject(class myClass {})).toBeFalsy();
+  expect(Typing.isObject(class MyClass {})).toBeFalsy();
   expect(Typing.isObject(class {})).toBeFalsy();
   expect(Typing.isObject(new Clazz())).toBeTruthy();
 

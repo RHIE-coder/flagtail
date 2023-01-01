@@ -137,7 +137,7 @@ class Typing {
             }
         }
         if(!isValid) {
-            throw new TypeError(
+            throw new ReferenceError(
                 JSON.stringify(
                     errItem,
                     // null,
