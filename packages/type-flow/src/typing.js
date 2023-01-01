@@ -168,32 +168,42 @@ class Typing {
             },
 
             instanceOf(typeName) {
+                if(Typing.isArray(typeName)) {
+                    return typeName.some(type => value instanceof type)
+                }
                 return value instanceof typeName;
             },
 
             primitiveOf(typeName) {
-               
-                if(typeof typeName === "function") {
-                    const primitiveIndex = Typing.#wrapperTypes.indexOf(typeName);
+                function primitiveTypeCheck(typeName) {
+                    if(typeof typeName === "function") {
+                        const primitiveIndex = Typing.#wrapperTypes.indexOf(typeName);
 
-                    if(primitiveIndex === -1) {
-                        return false;
+                        if(primitiveIndex === -1) {
+                            return false;
+                        }
+
+                        return typeof value === Typing.#primitiveTypes[primitiveIndex];
                     }
 
-                    return typeof value === Typing.#primitiveTypes[primitiveIndex];
-                }
+                    if(typeof typeName === "string") {
+                        const primitiveIndex = Typing.#primitiveTypes.indexOf(typeName);
 
-                if(typeof typeName === "string") {
-                    const primitiveIndex = Typing.#primitiveTypes.indexOf(typeName);
+                        if(primitiveIndex === -1) {
+                            return false;
+                        }
 
-                    if(primitiveIndex === -1) {
-                        return false;
+                        return typeof value === Typing.#primitiveTypes[primitiveIndex];
                     }
 
-                    return typeof value === Typing.#primitiveTypes[primitiveIndex];
+                    return false;
+                }
+                
+                if(Typing.isArray(typeName)) {
+                    return typeName.some(type => primitiveTypeCheck(type))
                 }
 
-                return false;
+                return primitiveTypeCheck(typeName);
             },
             
         }
