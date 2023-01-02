@@ -1,6 +1,6 @@
 {
   "name": "@flagtail/type-flow",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A validation library that makes your code safe and readable",
   "main": "dist/type-flow.js",
   "files": [

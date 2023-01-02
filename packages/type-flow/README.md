@@ -8,6 +8,61 @@ A validation library that makes your code safe and readable
 npm i @flagtail/type-flow
 ```
 
+## # Usage
+
+### - Client-side(ES)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type Flow Example</title>
+</head>
+<body>
+    <script src="./node_modules/@flagtail/type-flow/dist/type-flow.js"></script>
+    <script>
+        const { Typing, safeCall } = TypeFlow;
+        const validateResult = safeCall(()=>{
+            Typing.check([
+                Typing.the('hello').isNotNull().isPrimitiveOf(String),
+                Typing.the({role:"admin"}).isArray().isNotNull().isSatisfy(v => v.role === "admin"),
+                Typing.the(100).isPrimitiveOf(Number).isSatisfy(v => v % 2 === 0),
+            ])
+
+            return 'validation is success';
+        },
+        (err)=> {
+            console.log(JSON.stringify(
+                JSON.parse(err.message),
+                null,
+                2
+            ))
+        })
+    </script>
+</body>
+</html>
+```
+
+### - Node.js(CommonJS)
+
+```js
+const { Typing, safeCall } = require('@flagtail/type-flow');
+
+safeCall(()=>{
+    Typing.check([
+        Typing.the('hello').isNotNull().isPrimitiveOf(String),
+        Typing.the({role:"user"}).isArray().isNotNull().isSatisfy(v => v.role === "admin"),
+        Typing.the(100).isPrimitiveOf(Number).isSatisfy(v => v % 2 === 0),
+    ])
+},
+(err)=> {
+    console.log(err);
+})
+```
+
 ## # Why `type-flow`
 
 ### - Before use `type-flow`
