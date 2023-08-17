@@ -9,6 +9,7 @@ module.exports = class JSONResolver {
         const result = {}
     
         if (json instanceof Array) {
+
             const arrResult = []
             for (let i = 0; i < json.length; i++) {
                 if (json[i] instanceof Object) {
@@ -34,6 +35,7 @@ module.exports = class JSONResolver {
             }
 
             return result;
+
         }
     
     }

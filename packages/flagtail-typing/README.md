@@ -5,7 +5,7 @@ A validation library that makes your code safe and readable
 ## # Installation
 
 ```sh
-npm i @flagtail/type-flow
+npm i flagtail-type
 ```
 
 ## # Usage
@@ -22,7 +22,7 @@ npm i @flagtail/type-flow
     <title>Type Flow Example</title>
 </head>
 <body>
-    <script src="./node_modules/@flagtail/type-flow/dist/type-flow.js"></script>
+    <script src="./node_modules/flagtail-type/dist/flagtail-type.js"></script>
     <script>
         const { Typing, safeCall } = TypeFlow;
         const validateResult = safeCall(()=>{

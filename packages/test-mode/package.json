@@ -1,0 +1,43 @@
+{
+  "name": "test-mode",
+  "version": "0.0.0",
+  "description": "A validation library that makes your code safe and readable",
+  "main": "dist/flagtail-type.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --build",
+    "bundle": "rollup -c --bundleConfigAsCjs",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flagtail/flagtail-tools.git"
+  },
+  "keywords": [
+    "flagtail",
+    "validate",
+    "type-handler"
+  ],
+  "author": {
+    "name": "rhie-coder",
+    "url": "https://github.com/rhie-coder"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flagtail/flagtail-tools/issues"
+  },
+  "homepage": "https://github.com/flagtail/flagtail-tools/tree/main/packages/type-flow#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@rollup/plugin-babel": "^6.0.2",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.2.0",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-typescript": "^11.1.2",
+    "jest": "^29.3.1",
+    "rollup": "^3.3.0"
+  }
+}

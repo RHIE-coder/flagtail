@@ -1,13 +1,14 @@
 {
-  "name": "@flagtail/type-flow",
-  "version": "0.1.2",
+  "name": "flagtail-type",
+  "version": "0.0.0",
   "description": "A validation library that makes your code safe and readable",
-  "main": "dist/type-flow.js",
+  "main": "dist/flagtail-type.js",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
+    "build": "tsc --build",
+    "bundle": "rollup -c --bundleConfigAsCjs",
     "test": "jest"
   },
   "repository": {

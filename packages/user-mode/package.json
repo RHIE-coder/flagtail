@@ -1,0 +1,16 @@
+{
+  "name": "user-mode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "exec": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "test-mode":"*"
+  },
+  "license": "ISC"
+}

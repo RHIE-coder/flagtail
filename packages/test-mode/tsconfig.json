@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "src/**/*.ts"
+  ],
+  "compilerOptions": {
+    "declaration": true,                         /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
+    "outDir": "./build",                         /* Specify an output folder for all emitted files. */
+    "declarationDir": "./types",                 /* Specify the output directory for generated declaration files. */
+    "rootDir": ".",                              /* Specify the root folder within your source files. */
+    "baseUrl": ".",                              /* Specify the base directory to resolve non-relative module names. */
+  },
+  "references": [
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

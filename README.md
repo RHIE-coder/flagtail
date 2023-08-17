@@ -1,15 +1,11 @@
-# Flagtail Tools
+# Flagtail (`monorepo`)
 
-Tools to improve JavaScript code stability and quality
+Tools to improve JavaScript code stability and quality.
 
-## `type-flow`
+## `flagtail-typing`
 
 A validation library that makes your code safe and readable.
 
-## `jsconfig-alias-mapper`
+## `flagtail-jam`
 
-Register custom module paths using jsconfig JSON file in NodeJS
-
-## `json-rpc-flow`
-
-This is a module that facilitates JSON-RPC requests.
+Register custom module paths using jsconfig JSON file in NodeJS.

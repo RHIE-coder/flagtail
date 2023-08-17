@@ -1,12 +1,14 @@
 {
-  "name": "@flagtail/jsconfig-alias-mapper",
-  "version": "0.2.0",
+  "name": "flagtail-jam",
+  "version": "0.0.0",
   "description": "Register custom module paths using jsconfig JSON file in NodeJS",
   "main": "index.js",
   "files":[
     "index.js"
   ],
   "scripts": {
+    "build": "tsc --build",
+    "bundle": "rollup -c --bundleConfigAsCjs",
     "test": "jest"
   },
   "repository": {

@@ -9,9 +9,9 @@ export default [
         ],
         output: [
             {
-                file: "dist/type-flow.js",
+                file: "dist/flagtail-type.js",
                 format: "umd",
-                name: "TypeFlow"
+                name: "Typing",
             }
         ]
     },
