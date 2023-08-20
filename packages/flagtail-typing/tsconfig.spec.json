@@ -1,14 +1,13 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
+    "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */
     "composite": true,
+    "module": "commonjs",
     "types": ["jest", "node"]
   },
-  "exclude":[
+  "exclude": [
     "jest.config.ts",
-  ],
-  "include": [
     "**/*.test.ts",
     "**/*.spec.ts",
     "**/*.d.ts"

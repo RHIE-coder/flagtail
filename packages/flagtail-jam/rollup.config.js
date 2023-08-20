@@ -11,10 +11,8 @@ export default [
         ],
         output: [
             {
-                file: "./dist/flagtail-type.js",
-                format: "umd",
-                name: "Typing",
-                exports: "named",
+                file: "./dist/flagtail-jam.js",
+                format: "cjs",
             }
         ]
     },

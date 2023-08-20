@@ -2,6 +2,8 @@
 // https://github.com/ilearnio/module-alias
 // https://github.com/Sawtaytoes/better-module-alias
 
+console.log(module)
+
 const BuiltinModule = require('module');
 const path = require('path');
 const fs = require('fs');
