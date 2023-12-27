@@ -1,7 +1,7 @@
 {
   "name": "flagtail-jam",
   "version": "0.0.0",
-  "description": "Register custom module paths using jsconfig JSON file in NodeJS",
+  "description": "Register custom module paths using json config file in NodeJS",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -18,7 +18,7 @@
   "keywords": [
     "flagtail",
     "module-alias",
-    "jsconfig"
+    "jsonconfig"
   ],
   "author": {
     "name": "rhie-coder",

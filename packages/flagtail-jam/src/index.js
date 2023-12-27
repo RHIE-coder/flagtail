@@ -1,9 +1,6 @@
 // This package takes inspiration from module-alias & better-module-alias
 // https://github.com/ilearnio/module-alias
 // https://github.com/Sawtaytoes/better-module-alias
-
-console.log(module)
-
 const BuiltinModule = require('module');
 const path = require('path');
 const fs = require('fs');
@@ -73,11 +70,11 @@ const generateAliasesMap = (basePath, aliasName, aliasPath) => {
 	}
 
 	if(type === 'array' && aliasPath.length > 1) {
-		throw new SyntaxError('jsconfig paths array value should have 1 element');
+		throw new SyntaxError('jsconfig/tsconfig paths array value should have 1 element');
 	}
 
 	if(type === null) {
-		throw new SyntaxError('jsconfig paths value should be string or array')
+		throw new SyntaxError('jsconfig/tsconfig paths value should be string or array')
 	}
 
 	if(type === 'string') {
@@ -110,8 +107,8 @@ const addModuleAliases = (basePath, aliases) => {
 			!moduleAliasNameList.includes(aliasName)
 				&& moduleAliasNameList.push(aliasName)
 				&& moduleAliasNameList.sort();
-
 		})
+
 }
 
 
