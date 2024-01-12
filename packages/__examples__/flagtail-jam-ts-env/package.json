@@ -11,7 +11,6 @@
   "author": "rhie-coder",
   "license": "MIT",
   "dependencies": {
-    "@types/flagtail-jam": "^0.2.0",
-    "flagtail-jam": "^0.2.0"
+    "flagtail-jam": "^0.3.0"
   }
 }

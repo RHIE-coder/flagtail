@@ -109,3 +109,6 @@ temp*
 
 # MacOS
 .DS_Store
+
+# npm
+package-lock.json
