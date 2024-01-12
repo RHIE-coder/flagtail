@@ -1,0 +1,23 @@
+{
+  "name": "flagtail-jam-ts-migration",
+  "private": true,
+  "scripts": {
+    "exec": "ts-node src/index-jam.ts & ts-node src/index-module-alias & tsc "
+  },
+  "keywords": [
+    "flagtail-jam",
+    "@types/flagtail-jam"
+  ],
+  "author": "rhie-coder",
+  "license": "MIT",
+  "dependencies": {
+    "@types/flagtail-jam": "^0.2.0",
+    "flagtail-jam": "^0.2.0",
+    "module-alias": "^2.2.3",
+    "@types/module-alias": "^2.0.4"
+  },
+  "_moduleAliases": {
+    "@/crypto": "./src/jslib/crypto/",
+    "@/utils": "./src/jslib/utils/"
+  }
+}

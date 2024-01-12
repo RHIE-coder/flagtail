@@ -1,5 +1,5 @@
 module.exports = {
   moduleNameMapper: {
-    "@/(.*)": "<rootDir>/mock/$1",
+    "#/(.*)": "<rootDir>/mock/$1",
   },
 }

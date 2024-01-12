@@ -3,7 +3,11 @@
   "description": "tools to improve JavaScript code stability and quality",
   "private": true,
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "@example/jam/env.js":"lerna run exec --scope flagtail-jam-js-env",
+    "@example/jam/env.ts":"lerna run exec --scope flagtail-jam-ts-env",
+    "@example/jam/migration.js":"lerna run exec --scope flagtail-jam-js-migration",
+    "@example/jam/migration.ts":"lerna run exec --scope flagtail-jam-ts-migration"
   },
   "repository": {
     "type": "git",
@@ -13,7 +17,8 @@
     "flagtail"
   ],
   "author": {
-    "name": "rhie-coder",
+    "name": "RHIE MINHYUNG",
+    "githubUsername": "rhie-coder",
     "url": "https://github.com/rhie-coder"
   },
   "license": "MIT",
@@ -31,10 +36,10 @@
     "nx": "^16.7.1",
     "rollup": "^3.28.0",
     "ts-jest": "^29.1.1",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.1.6"
   },
   "workspaces": [
-    "packages/*"
+    "packages/**/*"
   ]
 }

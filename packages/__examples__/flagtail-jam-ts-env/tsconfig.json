@@ -1,0 +1,21 @@
+{
+  "include": ["src/**/*.ts", "index.ts"],
+  "compilerOptions": {
+    "target": "es5", /* comments */
+    "module": "CommonJS",
+    "rootDir": "./", // comments
+    "baseUrl": "./src/jslib",
+    "paths": { "@/crypto/*": ["crypto/*"], "@/utils/*": ["utils/*"] },
+    "declaration": true,
+    "outDir": "./build",
+    "declarationDir": "./types",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "skipLibCheck": true
+  }
+}

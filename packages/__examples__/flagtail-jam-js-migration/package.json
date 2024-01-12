@@ -1,0 +1,22 @@
+{
+  "name": "flagtail-jam-js-migration",
+  "private": true,
+  "scripts": {
+    "exec": "node 1_origin.js & node 2_module-alias.js & node 3_better-module-alias.js & node 4_jam.js"
+  },
+  "keywords": [
+    "flagtail-jam"
+  ],
+  "author": "rhie-coder",
+  "license": "MIT",
+  "dependencies": {
+    "better-module-alias": "^1.2.1",
+    "flagtail-jam": "^0.2.0",
+    "module-alias": "^2.2.3"
+  },
+  "_moduleAliases": {
+    "@/crypto": "./jslib/crypto",
+    "@/utils": "./jslib/utils"
+  },
+  "_moduleDirectories": ["jslib"]
+}

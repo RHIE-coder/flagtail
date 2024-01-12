@@ -1,0 +1,17 @@
+{
+  "name": "flagtail-jam-ts-env",
+  "private": true,
+  "scripts": {
+    "exec": "ts-node src/index.ts"
+  },
+  "keywords": [
+    "flagtail-jam",
+    "@types/flagtail-jam"
+  ],
+  "author": "rhie-coder",
+  "license": "MIT",
+  "dependencies": {
+    "@types/flagtail-jam": "^0.2.0",
+    "flagtail-jam": "^0.2.0"
+  }
+}

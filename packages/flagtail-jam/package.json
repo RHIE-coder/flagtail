@@ -1,32 +1,41 @@
 {
   "name": "flagtail-jam",
-  "version": "0.0.0",
-  "description": "Register custom module paths using json config file in NodeJS",
-  "main": "dist/index.js",
-  "files": [
-    "dist"
+  "version": "0.2.0",
+  "description": "register custom module paths using jsconfig/tsconfig/package JSON file in NodeJS",
+  "main": "index.js",
+  "files":[
+    "src/*",
+    "index.js"
   ],
   "scripts": {
-    "build": "tsc --build",
-    "bundle": "rollup -c --bundleConfigAsCjs",
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flagtail/flagtail-tools.git"
+    "url": "git+https://github.com/rhie-coder/flagtail.git",
+    "directory": "packages/flagtail-jam"
   },
   "keywords": [
     "flagtail",
+    "flagtail-jam",
+    "alias",
+    "path-alias",
     "module-alias",
-    "jsonconfig"
+    "jsconfig",
+    "tsconfig",
+    "package"
   ],
   "author": {
-    "name": "rhie-coder",
+    "name": "RHIE MINHYUNG",
+    "githubUsername": "rhie-coder",
     "url": "https://github.com/rhie-coder"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/flagtail/flagtail-tools/issues"
+    "url": "https://github.com/rhie-coder/flagtail/issues"
   },
-  "homepage": "https://github.com/flagtail/flagtail-tools/tree/main/packages/jsconfig-alias-mapper#readme"
+  "homepage": "https://github.com/rhie-coder/flagtail/tree/main/packages/flagtail-jam#readme",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  } 
 }

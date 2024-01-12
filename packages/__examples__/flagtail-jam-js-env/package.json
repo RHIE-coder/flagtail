@@ -1,0 +1,15 @@
+{
+  "name": "flagtail-jam-js-env",
+  "private": true,
+  "scripts": {
+    "exec": "node index.js"
+  },
+  "keywords": [
+    "flagtail-jam"
+  ],
+  "author": "rhie-coder",
+  "license": "MIT",
+  "dependencies": {
+    "flagtail-jam": "^0.2.0"
+  }
+}
