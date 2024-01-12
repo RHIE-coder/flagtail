@@ -8,8 +8,7 @@
   ],
   "scripts": {
     "build": "tsc --build",
-    "bundle": "rollup -c --bundleConfigAsCjs",
-    "test": "jest"
+    "bundle": "rollup -c --bundleConfigAsCjs"
   },
   "repository": {
     "type": "git",

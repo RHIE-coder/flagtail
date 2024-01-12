@@ -1,3 +1,6 @@
 __tests__
 mock
+.gitignore
+jest.config.jsconfig
 jsconfig.json
+package-lock.json

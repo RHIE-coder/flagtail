@@ -24,8 +24,6 @@ test('default loading', () => {
 
     expect(add(1, 2)).toBe(3);
     expect(decrpyter(encrpyter('hello world'))).toBe('hello world');
-
-    console.log(result.aliasMap)
 })
 
 test('mapping alias directly', () => {
