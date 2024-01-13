@@ -117,15 +117,7 @@ const math = require("@/utils/math");
 
 ### - TypeScript Configuration
 
-#### & Prerequisite
-
- - installation
-
-```sh
-npm install --save @types/flagtail-jam
-```
-
- - structure
+#### & Structure
 
 ```
 ├── src

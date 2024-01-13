@@ -1,6 +1,6 @@
 {
   "name": "flagtail-jam",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "register custom module paths using jsconfig/tsconfig/package JSON file in NodeJS",
   "main": "index.js",
   "files": [
