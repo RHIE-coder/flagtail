@@ -6,6 +6,7 @@
  */
 const path = require("path");
 const fs = require("fs");
+const strip = require("strip-comments");
 
 /**
  * @name Validator
@@ -169,8 +170,8 @@ class BasePath {
         }
 
         const data = fs.readFileSync(fullFilePath);
-        
-        return data.toString().replace(/\/\/.*|\/\*[^]*?\*\//g, '');
+        const commentRemovedString = strip(data.toString());
+        return commentRemovedString;
     }
 
     loadJSON(childFilePath) {

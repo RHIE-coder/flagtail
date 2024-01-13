@@ -1,9 +1,9 @@
 {
   "name": "flagtail-jam",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "register custom module paths using jsconfig/tsconfig/package JSON file in NodeJS",
   "main": "index.js",
-  "files":[
+  "files": [
     "src/*",
     "index.js",
     "index.d.ts"
@@ -38,5 +38,8 @@
   "homepage": "https://github.com/rhie-coder/flagtail/tree/main/packages/flagtail-jam#readme",
   "devDependencies": {
     "jest": "^29.3.1"
-  } 
+  },
+  "dependencies": {
+    "strip-comments": "^2.0.1"
+  }
 }
