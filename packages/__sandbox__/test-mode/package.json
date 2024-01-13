@@ -2,13 +2,12 @@
   "name": "test-mode",
   "version": "0.0.0",
   "description": "A validation library that makes your code safe and readable",
-  "main": "dist/flagtail-type.js",
+  "main": "build/src/index.js",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc --build",
-    "bundle": "rollup -c --bundleConfigAsCjs"
+    "build": "tsc --build"
   },
   "repository": {
     "type": "git",
